@@ -1,4 +1,4 @@
-<h1 align="center">🚀 Fullstack Project — NestJS + Prisma + SQLite</h1>
+<h1 align="center">Backend — NestJS + Prisma + SQLite</h1>
 
 <p align="center">
   <img src="https://nestjs.com/img/logo-small.svg" height="50"/>
