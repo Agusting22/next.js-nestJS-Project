@@ -1,4 +1,5 @@
-# Backend – NestJS + Prisma (SQLite)
+<h1 align="center">🚀 Fullstack Project — NestJS + Prisma + SQLite</h1>
+
 <p align="center">
   <img src="https://nestjs.com/img/logo-small.svg" height="50"/>
   &nbsp;&nbsp;&nbsp;
