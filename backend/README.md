@@ -4,7 +4,7 @@ Backend desarrollado con **NestJS**, usando **Prisma ORM** con **SQLite**, docum
 
 ---
 
-## 🧱 Stack tecnológico
+## Stack tecnológico
 
 ### Backend
 - NestJS
