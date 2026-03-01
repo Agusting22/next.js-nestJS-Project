@@ -8,11 +8,20 @@ datasource db {
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
-  name        String @unique
-  description String?
-  price       Float
-  image       String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id                Int      @id @default(autoincrement())
+  name              String   @unique
+  description       String?
+  price             Float
+  priceHistory      Float?
+  discount          Float    @default(0)
+  image             String?
+  isInternational   Boolean  @default(false)
+  countryOfOrigin   String?
+  arrivesTomorrow   Boolean  @default(false)
+  isFlash           Boolean  @default(false)
+  installments      Int?
+  installmentAmount Float?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  provider          String?
 }

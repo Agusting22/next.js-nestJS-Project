@@ -1,0 +1,150 @@
+.detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.back-link {
+  display: inline-block;
+  color: #2563eb;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.125rem;
+}
+
+.error {
+  color: #ef4444;
+}
+
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.product-detail-image {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background-color: #f9fafb;
+  
+  @media (min-width: 768px) {
+    height: 600px;
+  }
+  
+  .image {
+    object-fit: contain;
+    padding: 2rem;
+  }
+}
+
+.product-detail-info {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.product-badges {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.product-detail-title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: #1f2937;
+  line-height: 1.2;
+}
+
+.product-detail-price {
+  .price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2563eb;
+  }
+}
+
+.shipping-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #059669;
+  font-weight: 600;
+  
+  img {
+    filter: brightness(0) saturate(100%) invert(45%) sepia(78%) saturate(2476%) hue-rotate(130deg) brightness(95%) contrast(101%);
+  }
+}
+
+.product-detail-description {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1.5rem;
+  
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #1f2937;
+  }
+  
+  p {
+    color: #6b7280;
+    line-height: 1.6;
+  }
+}
+
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: auto;
+  
+  button {
+    padding: 1rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+  }
+  
+  .btn-buy {
+    background-color: #3483fa;
+    color: white;
+    
+    &:hover {
+      background-color: #2968c8;
+    }
+  }
+  
+  .btn-cart {
+    background-color: rgba(52, 131, 250, 0.1);
+    color: #3483fa;
+    border: 1px solid #3483fa;
+    
+    &:hover {
+      background-color: rgba(52, 131, 250, 0.2);
+    }
+  }
+}

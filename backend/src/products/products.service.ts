@@ -15,8 +15,13 @@ export class ProductsService {
 
   async create(createProductDto: CreateProductDto) {
     try {
+      const data = { ...createProductDto };
+      if (data.installments && data.installments > 0) {
+        data.installmentAmount = data.price / data.installments;
+      }
+
       return await this.prismaService.product.create({
-        data: createProductDto,
+        data,
       });
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
@@ -26,11 +31,31 @@ export class ProductsService {
           );
         }
       }
+      throw error;
     }
   }
 
-  async findAll(): Promise<Product[]> {
-    return this.prismaService.product.findMany();
+  async findAll(search?: string): Promise<Product[]> {
+    if (!search) {
+      return this.prismaService.product.findMany();
+    }
+
+    return this.prismaService.product.findMany({
+      where: {
+        OR: [
+          {
+            name: {
+              contains: search,
+            },
+          },
+          {
+            description: {
+              contains: search,
+            },
+          },
+        ],
+      },
+    });
   }
 
   async findOne(id: number): Promise<Product> {
@@ -48,9 +73,30 @@ export class ProductsService {
     id: number,
     updateProductDto: UpdateProductDto,
   ): Promise<Product> {
+    const data = { ...updateProductDto };
+    if (data.installments && data.installments > 0) {
+      if (!data.price) {
+        const currentProduct = await this.prismaService.product.findUnique({
+          where: { id },
+        });
+        if (currentProduct) {
+          data.installmentAmount = currentProduct.price / data.installments;
+        }
+      } else {
+        data.installmentAmount = data.price / data.installments;
+      }
+    } else if (data.price && !data.installments) {
+      const currentProduct = await this.prismaService.product.findUnique({
+        where: { id },
+      });
+      if (currentProduct?.installments && currentProduct.installments > 0) {
+        data.installmentAmount = data.price / currentProduct.installments;
+      }
+    }
+
     const productFound = await this.prismaService.product.update({
       where: { id },
-      data: updateProductDto,
+      data,
     });
     if (!productFound) {
       throw new NotFoundException(`Product with ID ${id} not found`);
